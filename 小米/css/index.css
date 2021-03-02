@@ -507,4 +507,16 @@
     margin-top: 16px;
     margin-bottom: 22px;
 }
+.aplc-header-left h3{
+    height: 58px;
+    line-height: 58px;
+    color: #333;
+    font-size: 22px;
+    font-weight: 200;
+    float: left;
+}
+.aplc-header-right{
+    float: right;
+    
+}
 
