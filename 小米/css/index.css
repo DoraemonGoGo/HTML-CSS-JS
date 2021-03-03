@@ -559,7 +559,7 @@
     width: 234px;
     height: 300px;
 }
-.aplc-top1 img:hover,.aplc-top2 img:hover{
+.aplc-top1 img:hover,.aplc-top img:hover{
     z-index: 2;
     box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
     transform: translate3d(0,-2px,0);
