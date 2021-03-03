@@ -554,10 +554,12 @@
     width: 234px;
     height: 300px;
     margin-bottom: 8px;
+    transition: all .2s linear;
 }
 .aplc-top2 img{
     width: 234px;
     height: 300px;
+    transition: all .2s linear;
 }
 .aplc-top1 img:hover,.aplc-top2 img:hover{
     z-index: 2;
