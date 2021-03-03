@@ -441,11 +441,11 @@
     height: 614px;
     float: left;
 }
-.mobile-content-right{
+.mobile-content-right.aplc-content-right{
     width: 992px;
     float: right;
 }
-.mobile-content-right li{
+.mobile-content-right li,.aplc-content-right li{
     width: 234px;
     height: 260px;
     padding: 20px 0;
@@ -456,18 +456,18 @@
     transition: all .2s linear;
     float: left;
 }
-.mobile-content-right li:hover{
+.mobile-content-right li:hover,.aplc-content-right li:hover{
     z-index: 2;
     box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
     transform: translate3d(0,-2px,0);
 }
-.mobile-img{
+.mobile-img,.aplc-img{
     width: 160px;
     height: 160px;
     display: block;
     margin: 0 auto 18px;
 }
-.mobile-title{
+.mobile-title,.aplc-title{
     font-size: 14px;
     font-weight: 400;
     color: #333;
@@ -477,7 +477,7 @@
     overflow: hidden;
     margin: 0 10px 2px;
 }
-.mobile-desc{
+.mobile-desc,.aplc-desc{
     margin: 0 10px 10px;
     height: 18px;
     font-size: 12px;
@@ -488,13 +488,13 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.mobile-price{
+.mobile-price,.aplc-price{
     display: block;
     margin: 0 10px 10px;
     text-align: center;
     color: #ff6700;
 }
-.mobile-price .old-price{
+.mobile-price .old-price,.aplc-price .old-price{
     font-size: 14px;
     color: #b0b0bb;
     text-decoration: line-through;
@@ -518,7 +518,6 @@
 }
 .right{
     height: 58px;
-    line-height: 58px;
 }
 .right1{
     height: 24px;
@@ -529,6 +528,7 @@
     font-size: 16px;
     font-weight: 200;
     margin-left: 30px;
+    margin-top: 16px;
 }
 .right2{
     height: 24px;
@@ -538,10 +538,29 @@
     color: #333;
     font-size: 16px;
     font-weight: 200;
+    margin-top: 16px;
 }
 .right1:hover,.right2:hover{
     color: #ff6700;
     border-bottom: 2px solid #ff6700;
     cursor: pointer;
 }
-
+.aplc-content-left{
+    width: 234px;
+    height: 614px;
+    float: left;
+}
+.aplc-top1 img{
+    width: 234px;
+    height: 300px;
+    margin-bottom: 8px;
+}
+.aplc-top2 img{
+    width: 234px;
+    height: 300px;
+}
+.aplc-top1 img:hover,.aplc-top2 img:hover{
+    z-index: 2;
+    box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
+    transform: translate3d(0,-2px,0);
+}
