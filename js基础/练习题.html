@@ -49,28 +49,27 @@
 
         //运用函数求0~1000的所有素数
 
-    function prinme(n){
-        if(n<=1){
-            return false;
-        }
-        for(var i=2;i<=Math.sqrt(n);i++){
-            if(n%i==0){
+        function prinme(n) {
+            if (n <= 1) {
                 return false;
             }
+            for (var i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
-    }
-    var t=0;
-    for(var j=0;j<=1000;j++){
-        if(prinme(j)){
-            document.write(j+" ");
-            t++;
-            if(t%6==0){
-            document.write("<br>");
+        var t = 0;
+        for (var j = 0; j <= 1000; j++) {
+            if (prinme(j)) {
+                document.write(j + " ");
+                t++;
+                if (t % 6 == 0) {
+                    document.write("<br>");
+                }
+            }
         }
-        }
-        
-    }
     </script>
 
 
