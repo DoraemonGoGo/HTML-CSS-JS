@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function collectionnumber(str){
+            var number="";
+            for(var i=0;i<str.length;i++){
+                var x=str.charAt(i);
+                if(x>=0&&x<=9){
+                    number+=x;
+                }
+            }
+            return number;
+        }
+        console.log(collectionnumber("qwe345sdgf4362adsf12"));
+    </script>
+</body>
+</html>
