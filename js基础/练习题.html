@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //递归方式
+        // function fib(n){
+        //     if(n==1||n==2){
+        //         return 1;
+        //     }
+        //     else{
+        //         return fib(n-1)+fib(n-2);
+        //     }
+        // }
+        // console.log(fib(7));
+
+        //非递归
+        // var n = 10000;
+        // var arr = new Array(n);
+        // arr[1] = arr[2] = 1;
+        // for (var i = 3; i <= n; i++) {
+        //     arr[i] = arr[i - 1] + arr[i - 2];
+        // }
+        // console.log(arr[7]);
+
+        //输出0~1000的所有素数
+        // var t = 0;
+        // for (var i = 2; i <= 1000; i++) {
+        //     var flag = 0;
+        //     for (var j = 2; j <= Math.sqrt(i); j++) {
+        //         if (i % j == 0) {
+        //             flag = 1;
+        //         }
+        //     }
+        //     if (flag == 0) {
+        //         document.write(i+" ");
+        //         t++;
+        //         if (t % 6 == 0)
+        //         document.write("<br>");
+        //     }  
+        // }
+
+        //运用函数求0~1000的所有素数
+
+    function prinme(n){
+        if(n<=1){
+            return false;
+        }
+        for(var i=2;i<=Math.sqrt(n);i++){
+            if(n%i==0){
+                return false;
+            }
+        }
+        return true;
+    }
+    var t=0;
+    for(var j=0;j<=1000;j++){
+        if(prinme(j)){
+            document.write(j+" ");
+            t++;
+            if(t%6==0){
+            document.write("<br>");
+        }
+        }
+        
+    }
+    </script>
+
+
+</body>
+
+</html>
