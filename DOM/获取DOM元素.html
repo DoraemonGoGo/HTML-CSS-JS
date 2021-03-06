@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">1111</div>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <ul>
+        <li>1111</li>
+        <li class="list">2222</li>
+        <li class="list">3333</li>
+    </ul>
+    <p name="aa">4444</p>
+    <script>
+        //通过id获取元素
+        var x=document.getElementById('div1');
+        //通过id获取元素，返回的是dom对象
+        console.log(x);
+        x.onclick=function(){
+            console.log("哈哈哈哈");
+        }
+        var y=document.getElementsByTagName('li');
+        console.log(y);
+        //通过标签名获取元素，返回数组
+        for(var i=0;i<y.length;i++){
+            console.log(y[i]);
+            y[i].onclick=function(){
+                console.log("哈哈哈哈");
+            }
+        }
+        //通过class获取元素,返回数组
+        var z=document.getElementsByClassName('list');
+        console.log(z);
+        for(var j=0;j<z.length;j++){
+            z[j].style.background="red";
+        }
+        //通过name获取元素，返回数组
+        var u=document.getElementsByName('aa');
+        console.log(u);
+
+    </script>
+</body>
+</html>
