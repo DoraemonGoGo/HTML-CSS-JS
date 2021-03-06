@@ -71,12 +71,24 @@
             <img src="images/Ahri9.jpg" alt="">
         </a>
     </div>
-    <div id="backTop" onclick="window.scrollTo(0,0)">
+    <div id="backTop">
         ^
     </div>
     <script>
-
-
+        //滚动条回调动态效果
+        var x=document.getElementById('backTop');
+        x.onclick=function(){
+            var y=setInterval(function(){
+                //获取到当前滚动条的高度
+                var c=document.documentElement.scrollTop;
+                if(c>0){
+                    window.scrollTo(0,c-50);
+                }
+                else{
+                    clearInterval(y);
+                }
+            },30);
+        }
     </script>
 </body>
 

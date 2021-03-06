@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stop{
+            height: 20px;
+            width: 50px;
+            background: #fe12fe;
+            position: fixed;
+            top: 10px;
+            right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button id="stop">stop</button>
+    <script>
+        //第一个参数为回调函数，第二个参数为时间间隔ms
+        var x=setInterval(function(){
+            console.log(Math.random());
+        },2000)
+        var y=document.getElementById('stop');
+        y.onclick=function(){
+            clearInterval(x);
+            console.log("定时器已清除!");
+        }
+    </script>
+</body>
+</html>
