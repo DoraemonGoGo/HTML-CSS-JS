@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 200;
+            padding: 300;
+        }
+        #btn-box{
+            overflow: hidden;
+        }
+        #btn-box li{
+            float: left;
+            background: #ccc;
+            border: 1px solid black;
+            margin-right: 4px;
+            list-style: none;
+        }
+        #btn-box li:hover{
+            cursor: pointer;
+        }
+        #btn-box .active{
+            background: aqua;
+            color: chocolate;
+        }
+        #content-box{
+            width: 300px;
+            height: 200px;
+        }
+        #content-box div{
+            display: none;
+        }
+        #content-box .c-active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="btn-box">
+            <li class="active">实事</li>
+            <li>体育</li>
+            <li>娱乐</li>
+        </ul>
+        <div id="content-box">
+            <div class="c-active">
+                <img src="/BOM/images/Ahri4.jpg" alt="">
+            </div>
+            <div>
+                <img src="/BOM/images/Ahri10.jpg" alt="">
+            </div>
+            <div>
+                <img src="/BOM/images/Ahri9.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        var x=document.getElementsByTagName('li');
+        var y=document.getElementById('content-box');
+        var z=y.getElementsByTagName('div');
+        for(var i=0;i<x.length;i++){
+            x[i].index=i;
+            x[i].onclick=function(){
+                for(var j=0;j<x.length;j++){
+                    x[j].className="";//所有li的active去掉
+                    z[j].className="";//所有div隐藏
+                }
+                this.className="active";//点击哪个给哪个添加class
+                z[this.index].className="c-active";
+            }
+        }
+    </script>
+</body>
+</html>
