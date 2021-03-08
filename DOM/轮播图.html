@@ -1,65 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        #container{
+
+        #container {
             width: 829px;
             height: 450px;
             margin: 0 auto;
             margin-top: 100px;
             position: relative;
         }
-        #img-box img{
+
+        #img-box img {
             display: none;
             width: 829px;
             height: 450px;
             margin: 0 auto;
         }
-        #img-box .active{
+
+        #img-box .active {
             display: block;
         }
-        ul{
+
+        ul {
             list-style: none;
         }
-        #btn-box{
+
+        #btn-box {
             position: absolute;
             right: 5px;
             bottom: 5px;
         }
-        #arrow-box{
+
+        #arrow-box {
             position: absolute;
             left: 5px;
             bottom: 5px;
         }
-        #btn-box li,#arrow-box li{
+
+        #btn-box li,
+        #arrow-box li {
             float: left;
             height: 20px;
             width: 20px;
             line-height: 20px;
             text-align: center;
-            background: rgba(0, 0, 0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             font-size: 12px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
             border-radius: 10px;
             margin-left: 2px;
         }
-        #btn-box li:hover,#arrow-box li:hover{
+
+        #btn-box li:hover,
+        #arrow-box li:hover {
             cursor: pointer;
         }
-        #btn-box .btn-active{
+
+        #btn-box .btn-active {
             background: turquoise;
         }
     </style>
 </head>
+
 <body>
     <div id="container">
         <div id="img-box">
@@ -77,26 +90,54 @@
             <li>5</li>
         </ul>
         <ul id="arrow-box">
-            <li>&lt;</li>
-            <li>&gt;</li>
+            <li id="last">&lt;</li>
+            <li id="next">&gt;</li>
         </ul>
     </div>
     <script>
-        var x=document.getElementById('btn-box');
-        var y=x.getElementsByTagName('li');
-        var z=document.getElementById('img-box');
-        var u=z.getElementsByTagName('img');
-        for(var i=0;i<y.length;i++){
-            y[i].index=i;
-            y[i].onclick=function(){
-                for(var j=0;j<y.length;j++){
-                    y[j].className="";
-                    u[j].className="";
+        var x = document.getElementById('btn-box');
+        var y = x.getElementsByTagName('li');
+        var z = document.getElementById('img-box');
+        var u = z.getElementsByTagName('img');
+        var m = document.getElementById('next');
+        var n=document.getElementById('last');
+        var now = 0;
+        for (var i = 0; i < y.length; i++) {
+            y[i].index = i;
+            y[i].onclick = function () {
+                for (var j = 0; j < y.length; j++) {
+                    y[j].className = "";
+                    u[j].className = "";
                 }
-                u[this.index].className="active";
-                this.className="btn-active";
+                u[this.index].className = "active";
+                this.className = "btn-active";
             }
+        }
+        m.onclick = function () {
+            now++;
+            if (now == 5) {
+                now = 0;
+            }
+            for (var k = 0; k < y.length; k++) {
+                y[k].className = "";
+                u[k].className = "";
+            }
+            y[now].className = "btn-active";
+            u[now].className = "active";
+        }
+        n.onclick = function () {
+            now--;
+            if (now == -1) {
+                now = 4;
+            }
+            for (var k = 0; k < y.length; k++) {
+                y[k].className = "";
+                u[k].className = "";
+            }
+            y[now].className = "btn-active";
+            u[now].className = "active";
         }
     </script>
 </body>
+
 </html>
