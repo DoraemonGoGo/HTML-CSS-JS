@@ -63,7 +63,8 @@
         }
 
         #btn-box li:hover,
-        #arrow-box li:hover {
+        #arrow-box li:hover,
+        #img-box img:hover {
             cursor: pointer;
         }
 
@@ -100,17 +101,20 @@
         var z = document.getElementById('img-box');
         var u = z.getElementsByTagName('img');
         var m = document.getElementById('next');
-        var n=document.getElementById('last');
+        var n = document.getElementById('last');
+        var container = document.getElementById('container');
         var now = 0;
         for (var i = 0; i < y.length; i++) {
             y[i].index = i;
             y[i].onclick = function () {
-                for (var j = 0; j < y.length; j++) {
-                    y[j].className = "";
-                    u[j].className = "";
-                }
-                u[this.index].className = "active";
-                this.className = "btn-active";
+                // for (var j = 0; j < y.length; j++) {
+                //     y[j].className = "";
+                //     u[j].className = "";
+                // }
+                // u[this.index].className = "active";
+                // y[this.index].className = "btn-active";
+                change(this.index);
+                now = this.index;
             }
         }
         m.onclick = function () {
@@ -118,24 +122,45 @@
             if (now == 5) {
                 now = 0;
             }
-            for (var k = 0; k < y.length; k++) {
-                y[k].className = "";
-                u[k].className = "";
-            }
-            y[now].className = "btn-active";
-            u[now].className = "active";
+            // for (var k = 0; k < y.length; k++) {
+            //     y[k].className = "";
+            //     u[k].className = "";
+            // }
+            // y[now].className = "btn-active";
+            // u[now].className = "active";
+            change(now);
         }
         n.onclick = function () {
             now--;
             if (now == -1) {
                 now = 4;
             }
-            for (var k = 0; k < y.length; k++) {
-                y[k].className = "";
-                u[k].className = "";
+            // for (var k = 0; k < y.length; k++) {
+            //     y[k].className = "";
+            //     u[k].className = "";
+            // }
+            // y[now].className = "btn-active";
+            // u[now].className = "active";
+            change(now);
+        }
+        function change(idx) {
+            for (var j = 0; j < y.length; j++) {
+                y[j].className = "";
+                u[j].className = "";
             }
-            y[now].className = "btn-active";
-            u[now].className = "active";
+            y[idx].className = "btn-active";
+            u[idx].className = "active";
+        }
+        var timer = setInterval(function () {
+            next.onclick();
+        }, 2500);
+        container.onmouseover = function () {
+            clearInterval(timer);
+        }
+        container.onmouseout = function () {
+            timer = setInterval(function () {
+                next.onclick();
+            }, 2500);
         }
     </script>
 </body>
