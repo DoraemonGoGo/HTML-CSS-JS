@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            top: 0;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #f0f;
+            /*必须要定位*/
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+      <div id="div1"></div>
+    <script>
+        var Div = document.getElementById('div1');
+        Div.onmousedown = function (e) {
+            //浏览器距离左边距离
+            console.log(Div.offsetLeft);
+            /*e
+                事件对象
+                e.clientX  鼠标距离浏览器左边的距离
+                e.clientY  鼠标距离浏览器右边的距离
+            */
+            var disX = e.clientX - Div.offsetLeft;
+            var disY = e.clientY - Div.offsetTop;
+            document.onmousemove = function (e) {
+                //鼠标抬起，div跟着鼠标走
+                Div.style.left = e.clientX - disX + "px";
+                Div.style.top = e.clientY - disY + "px";
+            }
+            Div.onmouseup=function(){
+                //鼠标抬起，清除mousemover
+                document.onmousemove=null;
+            }
+        }
+    </script>
+</body>
+
+</html>
