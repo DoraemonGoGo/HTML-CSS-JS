@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 829px;
+            height: 450px;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+        }
+
+        #img-box img {
+            width: 829px;
+            height: 450px;
+            margin: 0 auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 1.5s linear;
+        }
+        #img-box .active{
+            opacity: 1;
+            z-index: 1;
+        }
+        ul {
+            list-style: none;
+        }
+
+        #btn-box {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            z-index: 2;
+        }
+
+        #arrow-box {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            z-index: 2;
+        }
+
+        #btn-box li,
+        #arrow-box li {
+            float: left;
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            border-radius: 10px;
+            margin-left: 2px;
+        }
+
+        #btn-box li:hover,
+        #arrow-box li:hover,
+        #img-box img:hover {
+            cursor: pointer;
+        }
+
+        #btn-box .btn-active {
+            background: turquoise;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="img-box">
+            <img class="active" src="image/img1.jfif" alt="">
+            <img src="image/img2.jfif" alt="">
+            <img src="image/img3.jfif" alt="">
+            <img src="image/img4.jpg" alt="">
+            <img src="image/img5.jpg" alt="">
+        </div>
+        <ul id="btn-box">
+            <li class="btn-active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul id="arrow-box">
+            <li id="last">&lt;</li>
+            <li id="next">&gt;</li>
+        </ul>
+    </div>
+    <script>
+        var x = document.getElementById('btn-box');
+        var y = x.getElementsByTagName('li');
+        var z = document.getElementById('img-box');
+        var u = z.getElementsByTagName('img');
+        var m = document.getElementById('next');
+        var n = document.getElementById('last');
+        var container = document.getElementById('container');
+        var now = 0;
+        for (var i = 0; i < y.length; i++) {
+            y[i].index = i;
+            y[i].onclick = function () {
+                // for (var j = 0; j < y.length; j++) {
+                //     y[j].className = "";
+                //     u[j].className = "";
+                // }
+                // u[this.index].className = "active";
+                // y[this.index].className = "btn-active";
+                change(this.index);
+                now = this.index;
+            }
+        }
+        m.onclick = function () {
+            now++;
+            if (now == 5) {
+                now = 0;
+            }
+            // for (var k = 0; k < y.length; k++) {
+            //     y[k].className = "";
+            //     u[k].className = "";
+            // }
+            // y[now].className = "btn-active";
+            // u[now].className = "active";
+            change(now);
+        }
+        n.onclick = function () {
+            now--;
+            if (now == -1) {
+                now = 4;
+            }
+            // for (var k = 0; k < y.length; k++) {
+            //     y[k].className = "";
+            //     u[k].className = "";
+            // }
+            // y[now].className = "btn-active";
+            // u[now].className = "active";
+            change(now);
+        }
+        function change(idx) {
+            for (var j = 0; j < y.length; j++) {
+                y[j].className = "";
+                u[j].className = "";
+            }
+            y[idx].className = "btn-active";
+            u[idx].className = "active";
+        }
+        var timer = setInterval(function () {
+            m.onclick();
+        }, 2500);
+        container.onmouseover = function () {
+            clearInterval(timer);
+        }
+        container.onmouseout = function () {
+            timer = setInterval(function () {
+                m.onclick();
+            }, 2500);
+        }
+    </script>
+</body>
+
+</html>
