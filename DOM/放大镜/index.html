@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 400px;
+            height: 400px;
+        }
+
+        .small-box {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        #drag {
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="small-box">
+            <img src="images/1.jpg" alt="">
+            <span id="drag">
+
+            </span>
+        </div>
+        <div class="big-box">
+            <!-- <img src="images/2.jpg" alt=""> -->
+        </div>
+    </div>
+    <script>
+        var Dra = document.getElementById('drag');
+        var smallBox = document.getElementById('small-box');
+        smallBox.onmouseover = function () {
+            Dra.style.display = "inline";
+        }
+        smallBox.onmousemove = function (e) {
+            var DLeft = e.clientX - Dra.offsetWidth / 2;
+            var DTop = e.clientY - Dra.offsetHeight / 2;
+            if(DLeft<0){
+                DLeft=0;
+            }
+            if(DTop<0){
+                DTop=0;
+            }
+            if(DLeft>smallBox.offsetWidth-Dra.offsetWidth){
+                DLeft=smallBox.offsetWidth-Dra.offsetWidth;
+            }
+            if(DTop>smallBox.offsetHeight-Dra.offsetHeight){
+                DTop=smallBox.offsetHeight-Dra.offsetHeight;
+            }
+            Dra.style.left = DLeft + "px";
+            Dra.style.top = DTop + "px";
+        }
+    </script>
+</body>
+
+</html>
