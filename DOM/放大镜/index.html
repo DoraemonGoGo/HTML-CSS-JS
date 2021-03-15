@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
+
         #container {
             width: 400px;
             height: 400px;
         }
 
-        .small-box {
+        #small-box {
             width: 400px;
             height: 400px;
             position: relative;
+            border: 1px solid #ccc;
         }
 
         #drag {
@@ -32,6 +34,22 @@
             display: none;
             cursor: pointer;
         }
+
+        #big-box {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: absolute;
+            left: 410px;
+            top: 0;
+            display: none;
+        }
+        #big-img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 
@@ -39,37 +57,57 @@
     <div id="container">
         <div id="small-box">
             <img src="images/1.jpg" alt="">
-            <span id="drag">
-
-            </span>
+            <span id="drag"></span>
         </div>
-        <div class="big-box">
-            <!-- <img src="images/2.jpg" alt=""> -->
+        <div id="big-box">
+            <img id="big-img"src="images/2.jpg" alt="">
         </div>
     </div>
     <script>
         var Dra = document.getElementById('drag');
         var smallBox = document.getElementById('small-box');
+        var bigBox = document.getElementById('big-box');
+        var bigImg=document.getElementById('big-img');
         smallBox.onmouseover = function () {
             Dra.style.display = "inline";
+            bigBox.style.display = "inline";
         }
         smallBox.onmousemove = function (e) {
+            //计算出小图x轴最大距离和y轴最大距离
+            var xMax = smallBox.offsetWidth - Dra.offsetWidth;
+            var yMax = smallBox.offsetHeight - Dra.offsetHeight;
             var DLeft = e.clientX - Dra.offsetWidth / 2;
             var DTop = e.clientY - Dra.offsetHeight / 2;
-            if(DLeft<0){
-                DLeft=0;
+            //找出临界点  使drag不移动出小图
+            if (DLeft < 0) {
+                DLeft = 0;
             }
-            if(DTop<0){
-                DTop=0;
+            if (DTop < 0) {
+                DTop = 0;
             }
-            if(DLeft>smallBox.offsetWidth-Dra.offsetWidth){
-                DLeft=smallBox.offsetWidth-Dra.offsetWidth;
+            if (DLeft > xMax) {
+                DLeft = xMax;
             }
-            if(DTop>smallBox.offsetHeight-Dra.offsetHeight){
-                DTop=smallBox.offsetHeight-Dra.offsetHeight;
+            if (DTop > yMax) {
+                DTop = yMax;
             }
             Dra.style.left = DLeft + "px";
             Dra.style.top = DTop + "px";
+            //计算出大图x轴最大距离和y轴最大距离
+            //x轴最大距离为大图宽-父元素宽
+            //y轴最大距离为大图高-父元素高
+            var xbigMax=bigImg.offsetWidth-bigBox.offsetWidth;
+            var ybigMax=bigImg.offsetHeight-bigBox.offsetHeight;
+            //按比例定位大图的位置
+            var bigLeft=DLeft/xMax*xbigMax;
+            var bigTop=DTop/yMax*ybigMax;
+            bigImg.style.left=-bigLeft+"px";
+            bigImg.style.top=-bigTop+"px";
+        }
+
+        smallBox.onmouseout = function () {
+            Dra.style.display = "none";
+            bigBox.style.display="none";
         }
     </script>
 </body>
