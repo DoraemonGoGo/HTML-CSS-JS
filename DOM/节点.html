@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">111</div>
+    <p>11</p>
+    <ul>
+        <li id="li1">22</li>
+    </ul>
+    <script>
+        /*
+            节点类型的12个常量
+            nodeType   元素1  属性2  文本3  注释8  
+            遍历
+                下一个兄弟 nextSibling | nextElementSibling(ie不支持)
+        */
+        var Div=document.getElementById('div1');
+        var Li=document.getElementById('li1');
+        console.log(Div.nodeType,Div.nodeName);
+        console.log(Div.firstChild/*111(文本*/.nodeType,Div.firstChild/*111(文本*/.nodeName);
+        console.log(Div.nextSibling);//标准浏览器 换行 ↵  ie中 <p>11</p> 
+        console.log(Div.nextElementSibling);//<p>11</p> 
+        
+        function next(elem){//返回下一个元素  如果没找到返回null
+            do{
+                elem=elem.nextSibling;
+            }while(elem&&elem.nodeType!=1)//如果有下一个兄弟并且下一个元素不是元素节点循环继续
+            return elem;
+        }
+        console.log(next(Div));
+        console.log(next(Li));
+    </script>
+</body>
+</html>
