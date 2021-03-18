@@ -9,8 +9,9 @@
 <body>
     <div id="div1">111</div>
     <p>11</p>
-    <ul>
+    <ul id="ul1">
         <li id="li1">22</li>
+        <li id="li2">33</li>
     </ul>
     <script>
         /*
@@ -18,9 +19,15 @@
             nodeType   元素1  属性2  文本3  注释8  
             遍历
                 下一个兄弟 nextSibling | nextElementSibling(ie不支持)
+                上一个兄弟 previousSibling | previousElementSibling(ie不支持)
+                第一个孩子 firstchild
+                最后一个孩子 lastchild
+                所有的孩子 children
         */
         var Div=document.getElementById('div1');
         var Li=document.getElementById('li1');
+        var Li2=document.getElementById('li2');
+        var Ul=document.getElementById('ul1');
         console.log(Div.nodeType,Div.nodeName);
         console.log(Div.firstChild/*111(文本*/.nodeType,Div.firstChild/*111(文本*/.nodeName);
         console.log(Div.nextSibling);//标准浏览器 换行 ↵  ie中 <p>11</p> 
@@ -32,8 +39,24 @@
             }while(elem&&elem.nodeType!=1)//如果有下一个兄弟并且下一个元素不是元素节点循环继续
             return elem;
         }
+        function prev(elem){
+            do{
+                elem=elem.previousSibling;
+            }while(elem&&elem.nodeType!=1)
+            return elem;
+        }
+        function first(elem){
+            elem=elem.firstChild;
+            if(elem.nodeType!=1){
+                elem=next(elem);
+            }
+             return elem;   
+        }
         console.log(next(Div));
         console.log(next(Li));
+        console.log(prev(Li2));
+        console.log(prev(Li));
+        console.log(first(Ul));
     </script>
 </body>
 </html>
