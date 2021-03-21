@@ -72,15 +72,18 @@
         var aUl=document.getElementsByTagName('ul');
         for(var i=0;i<aH2.length;i++){
             aH2[i].index=i;
-            aUl[i].Isshow=false;
             aH2[i].onclick=function(){
-                if(aUl[this.index].Isshow){
-                    aUl[this.index].style.display="none"; 
+                var oUl=aUl[this.index];
+                //只能取到内联样式
+                if(oUl.style.display=="block"){
+                    oUl.style.display="none"; 
                 }
-                else{
-                    aUl[this.index].style.display="block"; 
+                else if(oUl.style.display=="none"||oUl.style.display=="")
+                //只有第一次取不到内联样式
+                {
+                    oUl.style.display="block"; 
+                    //通过js修改元素的样式 写在内联样式中
                 }
-                aUl[this.index].Isshow=!aUl[this.index].Isshow;
             }
         }
     </script>
