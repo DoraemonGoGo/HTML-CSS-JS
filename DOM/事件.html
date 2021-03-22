@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>111</div>
+    <div id="div1">222</div>
+    <script>
+        //绑定事件的方式
+        //可以重复绑定相同的事件
+        var Div = document.getElementById('div1');
+        //前面的被覆盖
+        // Div.onclick = function () {
+        //     console.log("22");
+        // }
+        // Div.onclick = function () {
+        //     console.log("2222");
+        // }
+        //addEventListener 添加事件监听 (事件名,回调函数,false冒泡|true捕获)
+        Div.addEventListener('click',function(){
+            console.log("22");
+        },false);
+        Div.addEventListener('click',function(){
+            console.log("2222");
+        },false);
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 300px;
+            height: 300px;
+            background: aquamarine;
+        }
+
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: cornflowerblue;
+        }
+
+        #div3 {
+            width: 100px;
+            height: 100px;
+            background:gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
+
+    <script>
+        var Div1 = document.getElementById('div1');
+        var Div2 = document.getElementById('div2');
+        var Div3 = document.getElementById('div3');
+        Div1.addEventListener('click', function () {
+            console.log("111捕获");
+        }, true);
+        Div2.addEventListener('click', function () {
+            console.log("222捕获");
+        }, true);
+        Div3.addEventListener('click', function () {
+            console.log("333捕获");
+            //阻止事件冒泡
+            // e.stopPropagation();
+        }, true);
+
+        Div1.addEventListener('click', function () {
+            console.log("111冒泡");
+        }, false);
+        Div2.addEventListener('click', function () {
+            console.log("222冒泡");
+        }, false);
+        Div3.addEventListener('click', function () {
+            console.log("333冒泡");
+            //阻止事件冒泡
+            // e.stopPropagation();
+        }, false);
+    
+        //事件冒泡  点击子元素的时候 会触发父元素的点击事件 事件冒泡(顺序从里到外)
+        //事件捕获  点击子元素 触发父元素事件 先触发父元素再触发子元素(顺序从外到里)
+        //执行顺序  既有冒泡又有捕获 先从外到里捕获 再从里到外冒泡
+    </script>
+</body>
+
+</html>
