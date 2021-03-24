@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <ul id="ul1">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <script>
+        var Btn=document.getElementById('btn');
+        var Ul=document.getElementById('ul1');
+        var Li=Ul.getElementsByTagName('li');
+        //点击输出li的内容 但是对于后生成的li 不能输出其内容
+        // for(var i=0;i<Li.length;i++){
+        //     Li[i].onclick=function(){
+        //         console.log(this.innerHTML);
+        //     }
+        // }
+        /*事件委托 个父元素绑定事件 点击子元素的时候 通过事件冒泡 会触发父元素的点击事件 通过判断事件源来判断是不是要绑定事件的子元素
+            后生成元素的事件绑定问题
+            减少绑定事件的个数
+        */
+        Ul.onclick=function(e){
+            // console.log(e.target);//事件源 由谁导致的这个事件 谁就是事件源
+            if(e.target.tagName=='LI'){
+                console.log(e.target.innerHTML);
+            }
+        }
+        Btn.onclick=function(){
+            var oLi=document.createElement('li');
+            oLi.innerHTML=Math.random();
+            Ul.appendChild(oLi);
+
+        }
+    </script>
+</body>
+</html>
