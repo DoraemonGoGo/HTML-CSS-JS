@@ -58,8 +58,8 @@
         }, false);
         Div3.addEventListener('click', function () {
             console.log("333冒泡");
-            //阻止事件冒泡
-            // e.stopPropagation();
+            // e.stopPropagation();标准浏览器阻止事件冒泡
+            // e.cancelBubble=true;ie浏览器阻止事件冒泡
         }, false);
     
         //事件冒泡  点击子元素的时候 会触发父元素的点击事件 事件冒泡(顺序从里到外)

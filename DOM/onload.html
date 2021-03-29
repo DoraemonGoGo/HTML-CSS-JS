@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //或者直接放在body的最后面
+        window.onload = function () {
+            //代码从前往后运行  之间放在前面会报错
+            var Div = document.getElementById('div1');
+            console.log(Div.innerHTML);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">111</div>
+    <img src="image/img1.jfif" alt="">
+</body>
+
+</html>

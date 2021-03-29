@@ -33,7 +33,9 @@
         //键盘码
         document.onkeyup=function(e){
             console.log(e.which);
-            if(e.which==13){
+            e=e||window.event//e 标准浏览器  window.event ie浏览器
+            if(e.which==13)//或者e.keyCode
+            {
                 alert("登陆成功！");
             }
         }
