@@ -7,6 +7,36 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <input type="text" onchange="fn()">
+    <input type="text" id="ipt1">
+    <input type="text" id="ipt2">
+    <script>
+        function fn() {
+            console.log(Math.random());
+        }
+        var Ipt1=document.getElementById('ipt1');
+        var Ipt2=document.getElementById('ipt2');
+        Ipt1.onfocus=function(){
+            console.log("focus");
+        }
+        Ipt1.onblur=function(){
+            console.log("blur");
+        }
+        //onkeydown会比输入的少一个
+        Ipt2.onkeydown=function(){
+            console.log(this.value);
+        }
+        //onkeyup跟输入的一样
+        Ipt2.onkeyup=function(){
+            console.log(this.value);
+        }
+        //键盘码
+        document.onkeyup=function(e){
+            console.log(e.which);
+            if(e.which==13){
+                alert("登陆成功！");
+            }
+        }
+    </script>
 </body>
 </html>
