@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var screenwidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var screenheight = document.documentElement.clientHeight || document.body.clientHeight;
+        function leaf() {
+            //获取屏幕宽度
+            this.width = Math.random() * 50 + 100;
+            //图片位置为屏幕宽度-叶子宽度
+            this.left = Math.random() * (screenwidth - this.width);
+            //形状为图片1-4
+            this.shape = Math.floor(Math.random() * 4) + 1;
+            this.top = Math.random() * 200;
+            this.img="";
+        }
+        //生成叶子到页面中
+        leaf.prototype.init = function () {
+            //1.创建图片
+            var Img = new Image();
+            Img.style.width = this.width + "px";
+            Img.style.left = this.left + "px";
+            Img.style.top =this.top+"px";
+            Img.src = "image/" + this.shape + ".png";
+            //给每一个叶子添加一个img属性
+            this.img = Img;
+            //插入页面中 一定要给图片定位 否则left width没有用
+            document.body.appendChild(Img);
+            
+        }
+        leaf.prototype.fall = function () {
+            var that = this;//在定时器中this指向window
+            console.log(that);
+            that.timer = setInterval(function () {
+                if (that.img.offsetTop >= screenheight - that.img.offsetHeight) {
+                    clearInterval(that.timer);
+                }
+                else {
+                    that.img.style.top = that.img.offsetTop + 3 + "px";
+                }
+            }, 10)
+        }
+        var leafArray = [];
+        for (var i = 0; i < 20; i++) {
+            var Leaf = new leaf();
+            Leaf.init();
+            leafArray.push(Leaf);
+        }
+        var t=0;
+        document.onclick = function () {
+            
+            for (var j = 0; j < leafArray.length; j++) {
+                leafArray[j].fall();   
+            }
+        }
+    </script>
+</body>
+
+</html>
