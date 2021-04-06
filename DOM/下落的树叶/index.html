@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +30,7 @@
             //形状为图片1-4
             this.shape = Math.floor(Math.random() * 4) + 1;
             this.top = Math.random() * 200;
-            this.img="";
+            this.img = "";
         }
         //生成叶子到页面中
         leaf.prototype.init = function () {
@@ -37,25 +38,31 @@
             var Img = new Image();
             Img.style.width = this.width + "px";
             Img.style.left = this.left + "px";
-            Img.style.top =this.top+"px";
+            Img.style.top = this.top + "px";
             Img.src = "image/" + this.shape + ".png";
             //给每一个叶子添加一个img属性
             this.img = Img;
             //插入页面中 一定要给图片定位 否则left width没有用
             document.body.appendChild(Img);
-            
+
         }
         leaf.prototype.fall = function () {
-            var that = this;//在定时器中this指向window
+            var that = this;//在定时器中this指向window 所以赋成另外一个值值
             console.log(that);
-            that.timer = setInterval(function () {
-                if (that.img.offsetTop >= screenheight - that.img.offsetHeight) {
-                    clearInterval(that.timer);
-                }
-                else {
-                    that.img.style.top = that.img.offsetTop + 3 + "px";
-                }
-            }, 10)
+            setTimeout(function () {//延迟 只执行一次
+                that.timer = setInterval(function () {
+                    if (that.img.offsetTop >= screenheight - that.img.offsetHeight) {
+                        clearInterval(that.timer);
+                    }
+                    else {
+                        /*
+                            .style.top只能取到内联样式的值
+                            offsetTop取值 不能赋值
+                        */
+                        that.img.style.top = that.img.offsetTop + 3 + "px";
+                    }
+                }, Math.random()*10)
+            }, Math.random() * 700);
         }
         var leafArray = [];
         for (var i = 0; i < 20; i++) {
@@ -63,11 +70,11 @@
             Leaf.init();
             leafArray.push(Leaf);
         }
-        var t=0;
+        var t = 0;
         document.onclick = function () {
-            
+
             for (var j = 0; j < leafArray.length; j++) {
-                leafArray[j].fall();   
+                leafArray[j].fall();
             }
         }
     </script>
