@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        body{
+
+        body {
             background-image: url(image/bg.jpg);
         }
-        ul{
+
+        ul {
             list-style: none;
         }
-        li{
+
+        li {
             width: 125px;
             height: 125px;
             border: 5px solid #fff;
@@ -25,7 +29,8 @@
             top: -135px;
             transition: all 2s ease;
         }
-        li span{
+
+        li span {
             position: absolute;
             left: 0;
             top: 0;
@@ -36,6 +41,7 @@
         }
     </style>
 </head>
+
 <body>
     <ul>
         <li>
@@ -85,7 +91,7 @@
         <li>
             <img src="image/thumbs/12.jpg" alt="">
             <span></span>
-        </li>  
+        </li>
         <li>
             <img src="image/thumbs/13.jpg" alt="">
             <span></span>
@@ -136,44 +142,59 @@
         </li>
     </ul>
     <script>
-        var oLi=document.getElementsByTagName('li');
+        var oLi = document.getElementsByTagName('li');
         //取屏幕宽度 用两种方式 浏览器可能具有兼容性
-        var screenWidth=document.documentElement.clientWidth||document.body.clientWidth;
-        var screenHeight=document.documentElement.clientHeight||document.body.clientHeight;
+        var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
         //取到元素宽高用offsetWidth offsetHeight
         //设置用元素.style.width/height
-        var liWidth=oLi[0].offsetWidth;
-        var liHeight=oLi[0].offsetHeight;
+        var liWidth = oLi[0].offsetWidth;
+        var liHeight = oLi[0].offsetHeight;
         //计算上下左右边距
-        var spaceX=(screenWidth-6*liWidth)/7;
-        var spaceY=(screenHeight-4*liHeight)/5;
-        var spaceLeft=(screenWidth-6*125)/2;
-        var spaceTop=(screenHeight-4*125)/2;
-        for(var i=0;i<oLi.length;i++){
-            oLi[i].index=i;
-            oLi[i].row=Math.floor(i/6)+1;
-            oLi[i].col=i%6+1;
-            oLi[i].style.transitionDelay=(23-i)*100+"ms";
-            oLi[i].style.left=(oLi[i].col)*spaceX+(oLi[i].col-1)*liWidth+"px";
-            oLi[i].style.top=(oLi[i].row)*spaceY+(oLi[i].row-1)*liHeight+"px";
-            oLi[i].style.transform="rotate("+(Math.random()*40-20)+"deg)";
-            oLi[i].onclick=fn;
+        var spaceX = (screenWidth - 6 * liWidth) / 7;
+        var spaceY = (screenHeight - 4 * liHeight) / 5;
+        var spaceLeft = (screenWidth - 6 * 125) / 2;
+        var spaceTop = (screenHeight - 4 * 125) / 2;
+        var flag = true;
+        for (var i = 0; i < oLi.length; i++) {
+            oLi[i].index = i;
+            oLi[i].row = Math.floor(i / 6) + 1;
+            oLi[i].col = i % 6 + 1;
+            oLi[i].style.transitionDelay = (23 - i) * 100 + "ms";
+            oLi[i].style.left = (oLi[i].col) * spaceX + (oLi[i].col - 1) * liWidth + "px";
+            oLi[i].style.top = (oLi[i].row) * spaceY + (oLi[i].row - 1) * liHeight + "px";
+            oLi[i].style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
+            oLi[i].onclick = fn;
         }
-        function fn(){
-            for(var i=0;i<oLi.length;i++){
-                oLi[i].style.transitionDelay="0ms";
-                oLi[i].style.borderWidth="0";
-                //图片的宽度要直接写125 因为border值是渐变的无法取到
-                oLi[i].style.left=spaceLeft+(oLi[i].col-1)*125+"px";
-                oLi[i].style.top=spaceTop+(oLi[i].row-1)*125+"px";
-                oLi[i].style.transform="rotate(0deg)";
-                //取span后需要加[0]
-                var Span=oLi[i].getElementsByTagName('span')[0];
-                Span.style.opacity=1;
-                //注意字符串拼接  图片 left top no-repeat
-                Span.style.background="url(image/"+(this.index+1)+".jpg) "+(-(oLi[i].col-1)*125)+"px "+(-(oLi[i].row-1)*125)+"px no-repeat";
+        function fn() { 
+            if (flag) {
+                for (var i = 0; i < oLi.length; i++) {
+                    oLi[i].style.transitionDelay = "0ms";
+                    oLi[i].style.borderWidth = "0";
+                    //图片的宽度要直接写125 因为border值是渐变的无法取到
+                    oLi[i].style.left = spaceLeft + (oLi[i].col - 1) * 125 + "px";
+                    oLi[i].style.top = spaceTop + (oLi[i].row - 1) * 125 + "px";
+                    oLi[i].style.transform = "rotate(0deg)";
+                    //取span后需要加[0]
+                    var Span = oLi[i].getElementsByTagName('span')[0];
+                    Span.style.opacity = 1;
+                    //注意字符串拼接  图片 left top no-repeat
+                    Span.style.background = "url(image/" + (this.index + 1) + ".jpg) " + (-(oLi[i].col - 1) * 125) + "px " + (-(oLi[i].row - 1) * 125) + "px no-repeat";
+                }
             }
+            else {
+                for (var i = 0; i < oLi.length; i++) {
+                    oLi[i].style.left = (oLi[i].col) * spaceX + (oLi[i].col - 1) * liWidth + "px";
+                    oLi[i].style.top = (oLi[i].row) * spaceY + (oLi[i].row - 1) * liHeight + "px";
+                    oLi[i].style.transform = "rotate(" + (Math.random() * 40 - 20) + "deg)";
+                    var Span = oLi[i].getElementsByTagName('span')[0];
+                    Span.style.opacity = "0";
+                    oLi[i].style.borderWidth = "5px";
+                }
+            }
+            flag = !flag;
         }
     </script>
 </body>
+
 </html>
