@@ -137,14 +137,18 @@
     </ul>
     <script>
         var oLi=document.getElementsByTagName('li');
+        //取屏幕宽度 用两种方式 浏览器可能具有兼容性
         var screenWidth=document.documentElement.clientWidth||document.body.clientWidth;
         var screenHeight=document.documentElement.clientHeight||document.body.clientHeight;
+        //取到元素宽高用offsetWidth offsetHeight
+        //设置用元素.style.width/height
         var liWidth=oLi[0].offsetWidth;
         var liHeight=oLi[0].offsetHeight;
+        //计算上下左右边距
         var spaceX=(screenWidth-6*liWidth)/7;
         var spaceY=(screenHeight-4*liHeight)/5;
-        var spaceLeft=(screenWidth-6*127)/2;
-        var spaceTop=(screenHeight-4*127)/2;
+        var spaceLeft=(screenWidth-6*125)/2;
+        var spaceTop=(screenHeight-4*125)/2;
         for(var i=0;i<oLi.length;i++){
             oLi[i].index=i;
             oLi[i].row=Math.floor(i/6)+1;
@@ -158,12 +162,15 @@
         function fn(){
             for(var i=0;i<oLi.length;i++){
                 oLi[i].style.transitionDelay="0ms";
-                oLi[i].style.borderWidth="1px";
-                oLi[i].style.left=spaceLeft+(oLi[i].col-1)*127+"px";
-                oLi[i].style.top=spaceTop+(oLi[i].row-1)*127+"px";
+                oLi[i].style.borderWidth="0";
+                //图片的宽度要直接写125 因为border值是渐变的无法取到
+                oLi[i].style.left=spaceLeft+(oLi[i].col-1)*125+"px";
+                oLi[i].style.top=spaceTop+(oLi[i].row-1)*125+"px";
                 oLi[i].style.transform="rotate(0deg)";
+                //取span后需要加[0]
                 var Span=oLi[i].getElementsByTagName('span')[0];
                 Span.style.opacity=1;
+                //注意字符串拼接  图片 left top no-repeat
                 Span.style.background="url(image/"+(this.index+1)+".jpg) "+(-(oLi[i].col-1)*125)+"px "+(-(oLi[i].row-1)*125)+"px no-repeat";
             }
         }
