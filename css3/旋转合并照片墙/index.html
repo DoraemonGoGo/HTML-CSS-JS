@@ -25,35 +25,115 @@
             top: -135px;
             transition: all 2s ease;
         }
+        li span{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
     </style>
 </head>
 <body>
     <ul>
-        <li><img src="image/thumbs/1.jpg" alt=""></li>
-        <li><img src="image/thumbs/2.jpg" alt=""></li>
-        <li><img src="image/thumbs/3.jpg" alt=""></li>
-        <li><img src="image/thumbs/4.jpg" alt=""></li>
-        <li><img src="image/thumbs/5.jpg" alt=""></li>
-        <li><img src="image/thumbs/6.jpg" alt=""></li>
-        <li><img src="image/thumbs/7.jpg" alt=""></li>
-        <li><img src="image/thumbs/8.jpg" alt=""></li>
-        <li><img src="image/thumbs/9.jpg" alt=""></li>
-        <li><img src="image/thumbs/10.jpg" alt=""></li>
-        <li><img src="image/thumbs/11.jpg" alt=""></li>
-        <li><img src="image/thumbs/12.jpg" alt=""></li>
-        <li><img src="image/thumbs/13.jpg" alt=""></li>
-        <li><img src="image/thumbs/14.jpg" alt=""></li>
-        <li><img src="image/thumbs/15.jpg" alt=""></li>
-        <li><img src="image/thumbs/16.jpg" alt=""></li>
-        <li><img src="image/thumbs/17.jpg" alt=""></li>
-        <li><img src="image/thumbs/18.jpg" alt=""></li>
-        <li><img src="image/thumbs/19.jpg" alt=""></li>
-        <li><img src="image/thumbs/20.jpg" alt=""></li>
-        <li><img src="image/thumbs/21.jpg" alt=""></li>
-        <li><img src="image/thumbs/22.jpg" alt=""></li>
-        <li><img src="image/thumbs/23.jpg" alt=""></li>
-        <li><img src="image/thumbs/24.jpg" alt=""></li>
-        
+        <li>
+            <img src="image/thumbs/1.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/2.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/3.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/4.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/5.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/6.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/7.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/8.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/9.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/10.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/11.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/12.jpg" alt="">
+            <span></span>
+        </li>  
+        <li>
+            <img src="image/thumbs/13.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/14.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/15.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/16.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/17.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/18.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/19.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/20.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/21.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/22.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/23.jpg" alt="">
+            <span></span>
+        </li>
+        <li>
+            <img src="image/thumbs/24.jpg" alt="">
+            <span></span>
+        </li>
     </ul>
     <script>
         var oLi=document.getElementsByTagName('li');
@@ -66,6 +146,7 @@
         var spaceLeft=(screenWidth-6*127)/2;
         var spaceTop=(screenHeight-4*127)/2;
         for(var i=0;i<oLi.length;i++){
+            oLi[i].index=i;
             oLi[i].row=Math.floor(i/6)+1;
             oLi[i].col=i%6+1;
             oLi[i].style.transitionDelay=(23-i)*100+"ms";
@@ -81,6 +162,9 @@
                 oLi[i].style.left=spaceLeft+(oLi[i].col-1)*127+"px";
                 oLi[i].style.top=spaceTop+(oLi[i].row-1)*127+"px";
                 oLi[i].style.transform="rotate(0deg)";
+                var Span=oLi[i].getElementsByTagName('span')[0];
+                Span.style.opacity=1;
+                Span.style.background="url(image/"+(this.index+1)+".jpg) "+(-(oLi[i].col-1)*125)+"px "+(-(oLi[i].row-1)*125)+"px no-repeat";
             }
         }
     </script>
