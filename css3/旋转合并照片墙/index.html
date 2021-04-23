@@ -37,7 +37,29 @@
             right: 0;
             bottom: 0;
             opacity: 0;
-            transition: opacity 2s ease;
+            /* transition: opacity 2s ease; */
+        }
+        #prev{
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -40px;
+            background:#ccc url(image/prev.png) center center no-repeat;
+            border-radius: 10px 10px 10px 10px;
+            display: none;
+        }
+        #next{
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -40px;
+            background:#ccc url(image/next.png) center center no-repeat;
+            border-radius: 10px 10px 10px 10px;
+            display: none;
         }
     </style>
 </head>
@@ -141,9 +163,15 @@
             <span></span>
         </li>
     </ul>
+    <div id="prev">
+    </div>
+    <div id="next">
+    </div>
     <script>
         var oLi = document.getElementsByTagName('li');
         //取屏幕宽度 用两种方式 浏览器可能具有兼容性
+        var Prev=document.getElementById('prev');
+        var Next=document.getElementById('next');
         var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
         var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
         //取到元素宽高用offsetWidth offsetHeight
@@ -156,6 +184,7 @@
         var spaceLeft = (screenWidth - 6 * 125) / 2;
         var spaceTop = (screenHeight - 4 * 125) / 2;
         var flag = true;
+        var New=0;
         for (var i = 0; i < oLi.length; i++) {
             oLi[i].index = i;
             oLi[i].row = Math.floor(i / 6) + 1;
@@ -181,6 +210,10 @@
                     //注意字符串拼接  图片 left top no-repeat
                     Span.style.background = "url(image/" + (this.index + 1) + ".jpg) " + (-(oLi[i].col - 1) * 125) + "px " + (-(oLi[i].row - 1) * 125) + "px no-repeat";
                 }
+                New=this.index;
+                console.log(New);
+                Prev.style.display="block";
+                Next.style.display="block";
             }
             else {
                 for (var i = 0; i < oLi.length; i++) {
@@ -191,8 +224,33 @@
                     Span.style.opacity = "0";
                     oLi[i].style.borderWidth = "5px";
                 }
+                Prev.style.display="none";
+                Next.style.display="none";
             }
             flag = !flag;
+        }
+        Prev.onclick=function(){
+            New--;
+            console.log(New);
+            if(New<0){
+                New=oLi.length-1;
+            }
+            for(var i=0;i<oLi.length;i++){
+                var Span = oLi[i].getElementsByTagName('span')[0];
+                Span.style.transitionDelay=Math.random()*500+"ms";
+                Span.style.backgroundImage="url(image/"+(New+1)+".jpg)"; 
+            }
+        }
+        Next.onclick=function(){
+            New++;
+            if(New==oLi.length){
+                New=0;
+            }
+            for(var i=0;i<oLi.length;i++){
+                var Span = oLi[i].getElementsByTagName('span')[0];
+                Span.style.transitionDelay=Math.random()*500+"ms";
+                Span.style.backgroundImage="url(image/"+(New+1)+".jpg)"; 
+            }
         }
     </script>
 </body>
