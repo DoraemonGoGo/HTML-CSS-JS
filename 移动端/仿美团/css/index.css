@@ -1,3 +1,42 @@
 .header{
     display: flex;
+    background: #FFBD00;
+}
+.header .city{
+    width: 90px;
+    height: 51px;
+    text-align: center;
+    line-height: 51px;
+}
+.header .mine{
+    width: 48px;
+    height: 51px;
+}
+.mine-img{
+    width: .56rem;
+    height: .56rem;
+    margin: 12px 12px;
+}
+.header .search-box{
+    flex: 1;
+    font-size: .26rem;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    border-radius: .18rem;
+    background: #ffff;
+    opacity: 0.9;
+    height: .64rem;
+    line-height: .64rem;
+    margin-top: .2rem;
+    color: #999999;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.search-img{
+    width: 0.28rem;
+    height: 0.28rem;
+    padding: 0.14rem 0.13rem 0.16rem 0.27rem;
+} 
+.search-box img{
+    vertical-align: middle;
 }
