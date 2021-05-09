@@ -40,3 +40,40 @@
 .search-box img{
     vertical-align: middle;
 }
+.banner{
+    display: flex;
+    background: #000;
+    height: 1.04rem;
+}
+.banner .logo{
+    height: 36px;
+    width: 36px;
+    margin: 0.16rem 0.2rem 0.16rem 0.3rem;
+}
+.banner .btn{
+    width: 55px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: .14rem;
+    color: #000;
+    background: #ffd000;
+    margin: 0.22rem 0.29rem 0 0;
+}
+.banner .text-box{
+    flex: 1;
+    color: #fff;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0.14rem 0 0 0;
+}
+.text-box p:nth-child(1){
+    color: #fff;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: .26rem;
+}
+.text-box p:nth-child(2){
+    color: #fff;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: .22rem;
+    font-weight: 300;
+}
