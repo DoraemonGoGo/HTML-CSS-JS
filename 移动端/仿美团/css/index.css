@@ -1,3 +1,6 @@
+body{
+    background-color: #f0efed;
+}
 .header{
     display: flex;
     background: #FFBD00;
@@ -76,4 +79,33 @@
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: .22rem;
     font-weight: 300;
+}
+.list-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.list-box .list{
+    height: 61px;
+    width: 20%;
+    background: #ff00;
+    margin: .2rem 0;
+}
+.list .iconfont{
+    display: block;
+    font-size: .5rem;
+    color: #fff;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: .8rem;
+    margin: auto;
+    margin-bottom: .14rem;
+}
+.list .icon-canju{
+    background: #fd9d21;
+}
+.list p{
+    text-align: center;
+    font-size: .24rem;
 }
