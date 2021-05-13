@@ -83,6 +83,7 @@ body{
 .list-box{
     display: flex;
     flex-wrap: wrap;
+    background: #fff;
 }
 .list-box .list{
     height: 61px;
@@ -108,4 +109,42 @@ body{
 .list p{
     text-align: center;
     font-size: .24rem;
+}
+.pro-list-box{
+    background: #fff;
+    margin-top: .3rem;
+}
+.pro-list{
+    display: flex;
+    padding: .28rem .28rem;
+    border-top: 1px solid #DDD8CE;
+}
+.pro-list img{
+    width: 1.8rem;
+    height: 1.64rem;
+    margin-right: .3rem;
+}
+.pro-info h3{
+    padding-top: .06rem;
+    font-size: .3rem;
+    font-weight: 400;
+    color: #333;
+}
+.pro-info .info1{
+    font-size: .24rem;
+    height: .68rem;
+    color: #666;
+}
+.info2 .number{
+    font-size: .36rem;
+    color: #F60;
+}
+.info2 .yuan{
+    font-size: .24rem;
+    font-weight: 300;
+}
+.info2 .price{
+    font-size: .24rem;
+    font-weight: 200;
+    margin-left: .1rem;
 }
