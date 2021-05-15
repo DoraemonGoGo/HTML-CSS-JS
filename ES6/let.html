@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a=6;
+        let b=7;
+        function fn(){
+            //var a=5;
+            a=6;//var 相当于在局部变量里再定义一个变量 不写var相当于改变原有值
+            console.log(a);
+        }
+        fn();
+        console.log(a);
+        console.log(window);//let定义的变量不会成为顶层对象window的属性 而var定义的变量是
+        var c=5;
+        var c=6;
+        console.log(a);//可以重复定义
+        // let e=3;
+        // let e=4;
+        // console.log(e);//不能重复定义 错误的
+        console.log(f);
+        var f=9;//undefined 相当于先定义 var f 再f=9
+        // console.log(h);
+        // let h=1;//报错 不存在变量提升 只能先定义再用
+        for(var i=0;i<5;i++){
+            console.log(i);
+        }
+        console.log(i);//i=5 (i先++再判断)var定义的变量不是块级作用域
+        for(let j=0;j<5;j++){
+            console.log(j);
+        }
+        console.log(j);//报错 let定义的变量为块级作用域只能在所在的作用域里面使用
+    </script>
+</body>
+</html>
