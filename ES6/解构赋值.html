@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [1, 2, 3, 4];
+        // const a=arr[0];
+        // const b=arr[1];
+        // const c=arr[2];
+        // const d=arr[3];
+        //数组解构赋值
+        //const [a,b,c,d]=arr;
+        //const [a,b,c] = arr;输出1，2，3
+        const [a,b,c,d,e]=arr;//1,2,3,4,undefine
+        console.log(a, b, c, d, e);
+
+        //对象解构赋值
+        const obj={
+            name:'fangtao',
+            age:19
+        }
+        // const Name=obj.name;
+        // const Age=obj.age;
+        // const name='baba';//name被重复定义
+        const {
+            name:userName,//别名
+            age:userAge
+        }=obj;
+        console.log(name,userAge);
+        // console.log(age);//报错
+        // console.log(name);//不会报错因为window下有一个name属性且为空字符串==window.name
+    </script>
+</body>
+
+</html>
